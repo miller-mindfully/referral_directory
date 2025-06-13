@@ -127,6 +127,10 @@
             .container {
                 padding: 20px;
             }
+            
+            .logo {
+                max-width: 250px;
+            }
         }
     </style>
 </head>
@@ -189,175 +193,132 @@
     </div>
 
     <script>
-        // Embedded CSV data from your uploaded file
-        const csvData = `category,sourceName,officeName,street1,street2,city,state,zip,phone,fax,providerName,providerName,providerName,providerName,providerName,providerName,providerName,providerName,providerName,providerName,providerName,providerName,providerName
-formal,trihealth,Bethel Family Practice,210 N. Union St.,,Bethel,OH,45106,513-734-9050,,Candes Jandes, CNP,Samantha Jeffries, CNP,Heather Marie Owens, MD,Abby Pritchard, CNP,,,,,,,,,
-formal,trihealth,Bethesda Family Practice Center,1775 West Lexington,Suite 100,Cincinnati,OH,45212,513-977-6700,513-531-2624,Elizabeth Beiter, MD,Amanda Goodale, DO,Richard Okragly, MD,Jonathan Sorscher, MD,Michael Webb, MD,Scott Woods, MD,Stephen Zitelli, MD,,,,,,
-formal,trihealth,Bethesda Group Practice – Milford,5861 Cinema Drive,,Milford,OH,45150,513-248-8800,,Fadi Bailony, MD,Mohammad Fattal, MD,Stephanie Schmidt, MD,Mathew Simon, DO,Elizabeth Wang, CNP,,,,,,,,
-formal,trihealth,Bethesda Montgomery Family Practice,206 E. South Street,Suite 200,Lebanon,OH,45036,513-932-7900,513-932-7908,Nicole Garland, MD,Matt Hartman, MD,Thomas Hoffman, MD,Brenda Ware, CNP,Susan Yeager, CNP,,,,,,,
-formal,trihealth,Bethesda North Montgomery Family Practice,10506 Montgomery Road,Suite 210,Cincinnati,OH,45242,513-686-3000,513-686-3065,Kimberly Brown, MD,Stacey Hensley, MD,Kimberly Huggins, MD,Ramesh Perera, MD,Christopher Woo, MD,,,,,,,
-formal,trihealth,Bethesda North OB/GYN,10506 Montgomery Road,Suite 310,Cincinnati,OH,45242,513-686-3080,513-686-3087,Elizabeth Barbieri, MD,Susan Grogan, MD,Jennifer Kurtz, MD,Megan Markey, MD,Lara Rapp, MD,Anne Schulz, MD,,,,,,,
-formal,trihealth,Bethesda OB/GYN Associates,1775 West Lexington,Suite 200,Cincinnati,OH,45212,513-977-6950,513-531-3663,Kimberly Bell, MD,Jennifer Curran, MD,Cynthia Evans, MD,Kerri Fleck, MD,Beth Nolan, MD,Lara Rapp, MD,Anne Schulz, MD,,,,,,
-formal,trihealth,Bethesda OB/GYN Butler,1996 Dearborn Ave.,,Cincinnati,OH,45206,513-961-5900,513-961-5909,Kimberly Bell, MD,Jennifer Curran, MD,Cynthia Evans, MD,Kerri Fleck, MD,Beth Nolan, MD,Lara Rapp, MD,Anne Schulz, MD,,,,,,
-formal,trihealth,Bethesda Pediatrics,619 Oak Street,,Cincinnati,OH,45206,513-961-3333,513-961-2200,Kimberly Ackerson, MD,Leslie Brennan, MD,William Briggs, MD,Susan Dunn, MD,Tracey Farrah, MD,Sharita Franks, MD,Kimberly Grimes, MD,Holly Hoffman, MD,Vanessa Johnson, MD,Kristin Kramer, MD,Jennifer Lawson, MD,Mary Lyvers, MD,Alexandra Poulos, MD
-formal,trihealth,Bethesda Pediatrics - Kenwood,7890 E. Kemper Road,Suite 210,Cincinnati,OH,45249,513-686-3050,513-686-3077,Kimberly Ackerson, MD,Leslie Brennan, MD,William Briggs, MD,Susan Dunn, MD,Tracey Farrah, MD,Sharita Franks, MD,Kimberly Grimes, MD,Holly Hoffman, MD,Vanessa Johnson, MD,Kristin Kramer, MD,Jennifer Lawson, MD,Mary Lyvers, MD,Alexandra Poulos, MD
-formal,trihealth,Good Samaritan Family Practice - Bethel,313 S. High Street,Suite 200,Hillsboro,OH,45133,937-393-1400,937-393-1401,Jill Carson, MD,,,,,,,,,,,
-formal,trihealth,Good Samaritan Family Practice - Georgetown,205 E. State Street,,Georgetown,OH,45121,937-378-6950,937-378-6951,Melissa Barger, MD,Jill Carson, MD,,,,,,,,,,,
-formal,trihealth,Good Samaritan Family Practice - Hillsboro,1545 N. High Street,Suite A,Hillsboro,OH,45133,937-393-0500,937-393-1401,Melissa Barger, MD,Jill Carson, MD,,,,,,,,,,,
-formal,trihealth,Good Samaritan Family Practice - Mason,6125 Settlement Way,,Mason,OH,45040,513-398-0500,,Abdinasir Warsame, MD,,,,,,,,,,,
-formal,trihealth,Good Samaritan Family Practice - Ripley,201 N. Main Street,,Ripley,OH,45167,937-392-6767,937-392-6799,Melissa Barger, MD,Jill Carson, MD,,,,,,,,,,,
-formal,trihealth,Good Samaritan Family Practice - Sardinia,12007 N. State Route 28,,Sardinia,OH,45171,937-446-1300,937-446-3404,Jennifer Higgins, CNP,Mark Krawiec, MD,Lisa Resch, CNP,,,,,,,,,,
-formal,trihealth,Good Samaritan Family Practice - Springdale,11644 Springdale Pike,,Springdale,OH,45246,513-671-7900,513-671-8990,Dawn Herring, CNP,Megan O'Neal, MD,Holly Weiss, MD,Sharon Wietbrock, MD,,,,,,,,,
-formal,trihealth,Good Samaritan HealthPlex Family Practice,375 Dixmyth Ave.,,Cincinnati,OH,45220,513-872-2000,513-872-2023,Brett Browning, MD,Christina Chisum, MD,Melissa Gundler, MD,Michelle Hollstein, MD,Megan O'Neal, MD,Holly Weiss, MD,Sharon Wietbrock, MD,,,,,,
-formal,trihealth,Good Samaritan Hospital Family Practice,375 Dixmyth Avenue,Suite 300,Cincinnati,OH,45220,513-872-2320,513-872-2326,Brett Browning, MD,Christina Chisum, MD,Melissa Gundler, MD,Michelle Hollstein, MD,Megan O'Neal, MD,Holly Weiss, MD,Sharon Wietbrock, MD,,,,,,
-formal,trihealth,Good Samaritan Internal Medicine Associates,375 Dixmyth Avenue,Suite 301,Cincinnati,OH,45220,513-872-3880,513-872-3886,William Benzing, MD,Joseph Grimes, MD,Arlene Lowe, MD,Jennifer Zeigler, MD,,,,,,,,,
-formal,trihealth,Good Samaritan Medical Group - Bridgetown,3565 Harrison Avenue,,Cincinnati,OH,45211,513-662-0500,513-662-0527,Timothy Gillen, MD,Karen Mossel, MD,Suzanne Muller, MD,Melissa Ward, MD,Sharon Wietbrock, MD,,,,,,,
-formal,trihealth,Good Samaritan Medical Group - East,720 Oak Street,,Cincinnati,OH,45206,513-961-5900,513-961-5905,Barbara Armacost, MD,Cheryl Gerber, CNP,Kimberly Huggins, MD,Ramesh Perera, MD,Jeffery Sasser, MD,Christopher Woo, MD,,,,,,,
-formal,trihealth,Good Samaritan OB/GYN Associates,375 Dixmyth Avenue,Suite 305,Cincinnati,OH,45220,513-872-3350,513-872-3358,Jennifer Ahn, MD,Jennifer Curran, MD,Terri Ernst, MD,Kerri Fleck, MD,Beth Nolan, MD,Lara Rapp, MD,Anne Schulz, MD,,,,,,
-formal,trihealth,Pediatrics Associates of Springdale,11644 Springdale Pike,,Springdale,OH,45246,513-671-7900,513-671-8990,Kimberly Ackerson, MD,William Briggs, MD,Susan Dunn, MD,Sharita Franks, MD,Kimberly Grimes, MD,Holly Hoffman, MD,Vanessa Johnson, MD,Kristin Kramer, MD,Jennifer Lawson, MD,Mary Lyvers, MD,Alexandra Poulos, MD,,
-formal,trihealth,TriHealth Express Care - Bethel,313 S. High Street,Suite 200,Hillsboro,OH,45133,937-393-1400,937-393-1401,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Express Care - Bethesda North,10506 Montgomery Road,,Cincinnati,OH,45242,513-686-2996,,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Express Care - Bridgetown,3565 Harrison Avenue,,Cincinnati,OH,45211,513-662-0500,513-662-0527,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Express Care - East,720 Oak Street,,Cincinnati,OH,45206,513-961-5900,513-961-5905,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Express Care - Georgetown,205 E. State Street,,Georgetown,OH,45121,937-378-6950,937-378-6951,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Express Care - Hillsboro,1545 N. High Street,Suite A,Hillsboro,OH,45133,937-393-0500,937-393-1401,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Express Care - Mason,6125 Settlement Way,,Mason,OH,45040,513-398-0500,,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Express Care - Montgomery,10506 Montgomery Road,Suite 210,Cincinnati,OH,45242,513-686-3000,513-686-3065,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Express Care - Sardinia,12007 N. State Route 28,,Sardinia,OH,45171,937-446-1300,937-446-3404,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Express Care - Springdale,11644 Springdale Pike,,Springdale,OH,45246,513-671-7900,513-671-8990,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Express Care - Western Hills,3565 Harrison Avenue,,Cincinnati,OH,45211,513-662-0500,513-662-0527,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Medical Group - Bethel,210 N. Union St.,,Bethel,OH,45106,513-734-9050,,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Medical Group - Bethesda,1775 West Lexington,Suite 100,Cincinnati,OH,45212,513-977-6700,513-531-2624,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Medical Group - East,720 Oak Street,,Cincinnati,OH,45206,513-961-5900,513-961-5905,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Medical Group - Milford,5861 Cinema Drive,,Milford,OH,45150,513-248-8800,,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Medical Group - Montgomery,206 E. South Street,Suite 200,Lebanon,OH,45036,513-932-7900,513-932-7908,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Medical Group - North Montgomery,10506 Montgomery Road,Suite 210,Cincinnati,OH,45242,513-686-3000,513-686-3065,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Medical Group - Oak Street,720 Oak Street,,Cincinnati,OH,45206,513-961-5900,513-961-5905,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Medical Group - Springdale,11644 Springdale Pike,,Springdale,OH,45246,513-671-7900,513-671-8990,Staff,,,,,,,,,,,
-formal,trihealth,TriHealth Medical Group - Western Hills,3565 Harrison Avenue,,Cincinnati,OH,45211,513-662-0500,513-662-0527,Staff,,,,,,,,,,,
-formal,trihealth,West Chester Family Practice,7500 Tylersville Road,Suite 200,West Chester,OH,45069,513-779-1000,513-779-1009,Maisa Feghali, MD,Stephanie Kuhn, MD,Melanie Peck, MD,Jeffery Sasser, MD,Pamela Whitman, MD,,,,,,,
-formal,trihealth,Western Hills Family Practice,3565 Harrison Avenue,,Cincinnati,OH,45211,513-662-0500,513-662-0527,Timothy Gillen, MD,Karen Mossel, MD,Suzanne Muller, MD,Melissa Ward, MD,Sharon Wietbrock, MD,,,,,,,
-formal,central ohio primary care,Worthington Pediatrics,890 High Street,,Worthington,OH,43085,614-540-7339,,Nardia Ataman, MD,Zorica Bjelovuk, CNP,Kelley Eppel, CNP,,,,,,,,,
-formal,mercy health,Adams County Family Medicine,17862 State Route 247,,Seaman,OH,45679,937-695-0748,,Ashley Wellman, APRN-CNP,Morgan Paul, MD,Courtney Warnock, CNP,,,,,,,,,
-formal,mercy health,Anderson Hospital,,,Cincinnati,OH,,,,,,,,,,,,,,,,
-formal,mercy health,Barrett Family Practice,910 State Route 222,,Bethel,OH,45106,513-734-8821,,Neil Kaplan, MD,Michelle Hirt, CNP,,,,,,,,,,,
-formal,mercy health,Brown County Family Medicine,22520 US Highway 68,Suite 5,Georgetown,OH,45121,937-378-8888,,Christie Hamrick, APRN-CNP,,,,,,,,,,,
-formal,mercy health,Brown County Family Medicine- Russellville,9164 Russellville Road,,Georgetown,OH,45121,937-378-5575,,Christie Hamrick, APRN-CNP,,,,,,,,,,,
-formal,mercy health,Butler County OB/GYN,5075 Pleasant Avenue,Suite 320,Fairfield,OH,45014,513-858-5115,,Rebecca Burwinkel, MD,Christine Phelps, APRN-CNP,,,,,,,,,,,
-formal,mercy health,Cardiology of Southwest Ohio,7911 Ewing Boulevard,Suite 203,Florence,KY,41042,859-371-4949,,Naser Amin, MD,Gouthami Kalva, MD,Rebecca Fawcett, APRN-CNP,,,,,,,,,,
-formal,mercy health,Cardiology of Southwest Ohio,1212 Oak Street,,Cincinnati,OH,45206,513-569-6155,,Naser Amin, MD,Gouthami Kalva, MD,Rebecca Fawcett, APRN-CNP,,,,,,,,,,
-formal,mercy health,Cardiology of Southwest Ohio,2446 Kipling Avenue,,Cincinnati,OH,45239,513-853-2555,,Naser Amin, MD,Gouthami Kalva, MD,Rebecca Fawcett, APRN-CNP,,,,,,,,,,
-formal,mercy health,Cardiology of Southwest Ohio,4700 E Galbraith Road,Suite 108,Cincinnati,OH,45236,513-792-7070,,Naser Amin, MD,Gouthami Kalva, MD,Rebecca Fawcett, APRN-CNP,,,,,,,,,,
-formal,mercy health,Cardiology of Southwest Ohio,630 Ohio Pike,Suite 101,Cincinnati,OH,45245,513-752-2022,,Naser Amin, MD,Gouthami Kalva, MD,Rebecca Fawcett, APRN-CNP,,,,,,,,,,
-formal,mercy health,Cardiology of Southwest Ohio,1212 Oak Street,,Cincinnati,OH,,513-569-6155,,Naser Amin, MD,Gouthami Kalva, MD,Rebecca Fawcett, APRN-CNP,,,,,,,,,,
-formal,mercy health,Chapel Hill Family Medicine,3131 Harvey Avenue,,Cincinnati,OH,45229,513-559-6363,,Marilyn Wyne, MD,Heather Beaulieu, CNP,Erin Crowe, CNP,Denise Platt, CNP,Amy Sheehan, CNP,,,,,,,,
-formal,mercy health,Clermont Family Medicine,1430 Ohio Pike,Suite 201,Amelia,OH,45102,513-752-3456,,Kimberly Neeb, APRN-CNP,Regina Krainz, MD,Lisa Flannery, CNP,Corinne Franke, CNP,,,,,,,,,
-formal,mercy health,Covington Children's Medical Group,1717 Scott Street,,Covington,KY,41011,513-569-5437,,Keegan Chaudoir, DO,Melissa Riggs, CNP,,,,,,,,,,,
-formal,mercy health,Dayton Eye and Facial Plastic Surgery,1611 S. Main Street,Suite 3,Dayton,OH,45409,937-293-1155,,David Klonowski, MD,,,,,,,,,,,
-formal,mercy health,Endocrinology of Southwest Ohio,7911 Ewing Boulevard,Suite 204,Florence,KY,41042,859-371-4900,,Marilyn Wyne, MD,Jessica Ashcraft, CNP,,,,,,,,,,,
-formal,mercy health,Endocrinology of Southwest Ohio,2446 Kipling Avenue,,Cincinnati,OH,45239,513-853-2555,,Marilyn Wyne, MD,Jessica Ashcraft, CNP,,,,,,,,,,,
-formal,mercy health,Endocrinology of Southwest Ohio,4700 E Galbraith Road,Suite 107,Cincinnati,OH,45236,513-792-7065,,Marilyn Wyne, MD,Jessica Ashcraft, CNP,,,,,,,,,,,
-formal,mercy health,Endocrinology of Southwest Ohio,630 Ohio Pike,Suite 102,Cincinnati,OH,45245,513-752-7877,,Marilyn Wyne, MD,Jessica Ashcraft, CNP,,,,,,,,,,,
-formal,mercy health,Endocrinology of Southwest Ohio,1212 Oak Street,,Cincinnati,OH,45206,513-569-6155,,Marilyn Wyne, MD,Jessica Ashcraft, CNP,,,,,,,,,,,
-formal,mercy health,Fairfield Family Medicine,5075 Pleasant Avenue,Suite 110,Fairfield,OH,45014,513-867-8470,,Christine Phelps, APRN-CNP,John Amaama, MD,Deborah Coleman, CNP,,,,,,,,,
-formal,mercy health,Floravida Family Medicine,7911 Ewing Boulevard,Suite 100,Florence,KY,41042,859-371-4930,,Christine Phelps, APRN-CNP,Deborah Coleman, CNP,John Amaama, MD,,,,,,,,,,,
-formal,mercy health,Florenceville Family Medicine,7911 Ewing Boulevard,Suite 101,Florence,KY,41042,859-371-4925,,Christine Phelps, APRN-CNP,Deborah Coleman, CNP,John Amaama, MD,,,,,,,,,,,
-formal,mercy health,Freestore Foodbank,1141 Central Parkway,,Cincinnati,OH,45202,513-482-7530,,Tanya Horacek, MD,,,,,,,,,,,
-formal,mercy health,Gastroenterology of Southwest Ohio,7911 Ewing Boulevard,Suite 201,Florence,KY,41042,859-371-4960,,Neil Kaplan, MD,,,,,,,,,,,
-formal,mercy health,Gastroenterology of Southwest Ohio,2446 Kipling Avenue,,Cincinnati,OH,45239,513-853-2555,,Neil Kaplan, MD,,,,,,,,,,,
-formal,mercy health,Gastroenterology of Southwest Ohio,4700 E Galbraith Road,Suite 202,Cincinnati,OH,45236,513-792-7055,,Neil Kaplan, MD,,,,,,,,,,,
-formal,mercy health,Gastroenterology of Southwest Ohio,630 Ohio Pike,Suite 202,Cincinnati,OH,45245,513-752-7879,,Neil Kaplan, MD,,,,,,,,,,,
-formal,mercy health,Gastroenterology of Southwest Ohio,1212 Oak Street,,Cincinnati,OH,45206,513-569-6155,,Neil Kaplan, MD,,,,,,,,,,,
-formal,mercy health,Good Samaritan Hospital,,,Cincinnati,OH,,,,,,,,,,,,,,,,
-formal,mercy health,Gynecology of Southwest Ohio,7911 Ewing Boulevard,Suite 300,Florence,KY,41042,859-371-4940,,Rebecca Burwinkel, MD,Christine Phelps, APRN-CNP,,,,,,,,,,,
-formal,mercy health,Gynecology of Southwest Ohio,2446 Kipling Avenue,,Cincinnati,OH,45239,513-853-2555,,Rebecca Burwinkel, MD,Christine Phelps, APRN-CNP,,,,,,,,,,,
-formal,mercy health,Gynecology of Southwest Ohio,4700 E Galbraith Road,Suite 205,Cincinnati,OH,45236,513-792-7063,,Rebecca Burwinkel, MD,Christine Phelps, APRN-CNP,,,,,,,,,,,
-formal,mercy health,Gynecology of Southwest Ohio,630 Ohio Pike,Suite 203,Cincinnati,OH,45245,513-752-7878,,Rebecca Burwinkel, MD,Christine Phelps, APRN-CNP,,,,,,,,,,,
-formal,mercy health,Gynecology of Southwest Ohio,1212 Oak Street,,Cincinnati,OH,45206,513-569-6155,,Rebecca Burwinkel, MD,Christine Phelps, APRN-CNP,,,,,,,,,,,
-formal,mercy health,Heartwood Family Medicine,810 Kenton Street,,Cincinnati,OH,45203,513-569-6000,,Camealia Sutton, MD,Barbara Keeton, APRN-CNP,Meagan Lichtenstein, CNP,Natalie Quinn, CNP,Amy Sheehan, CNP,,,,,,,,
-formal,mercy health,Heartwood Family Medicine Springdale,400 E Kemper Road,Suite 3,Springdale,OH,45246,513-853-7678,,Camealia Sutton, MD,Barbara Keeton, APRN-CNP,Meagan Lichtenstein, CNP,Natalie Quinn, CNP,Amy Sheehan, CNP,,,,,,,,
-formal,mercy health,Highland County Family Medicine,1275 N. High Street,Suite 1,Hillsboro,OH,45133,937-393-2162,,Kimberly Neeb, APRN-CNP,Camealia Sutton, MD,Barbara Keeton, APRN-CNP,Meagan Lichtenstein, CNP,Natalie Quinn, CNP,Amy Sheehan, CNP,,,,,,,
-formal,mercy health,Inner City Health Center,810 Kenton Street,,Cincinnati,OH,45203,513-569-6000,,Camealia Sutton, MD,Tanya Horacek, MD,Barbara Keeton, APRN-CNP,Meagan Lichtenstein, CNP,Natalie Quinn, CNP,Amy Sheehan, CNP,,,,,,,
-formal,mercy health,Jewish Hospital,,,Cincinnati,OH,,,,,,,,,,,,,,,,
-formal,mercy health,Jewish Hospital - Mercy,,,Cincinnati,OH,,,,Staff,,,,,,,,,,,
-formal,mercy health,Jewish Hospital East,,,Cincinnati,OH,,,,,,,,,,,,,,,,
-formal,mercy health,LIFE Healthcare,150 E. Liberty Street,,Cincinnati,OH,45202,513-784-1400,,Tanya Horacek, MD,Michelle Hirt, CNP,,,,,,,,,,,
-formal,mercy health,Liddy Shriver and Hariette Hampton House,7050 Reading Road,,Cincinnati,OH,45237,513-731-4060,,Camealia Sutton, MD,Tanya Horacek, MD,Michelle Hirt, CNP,Barbara Keeton, APRN-CNP,Meagan Lichtenstein, CNP,Natalie Quinn, CNP,Amy Sheehan, CNP,,,,,,
-formal,mercy health,Madisonville Family Medicine,4700 E Galbraith Road,Suite 104,Cincinnati,OH,45236,513-792-7050,,Kimberly Neeb, APRN-CNP,Regina Krainz, MD,Lisa Flannery, CNP,Corinne Franke, CNP,,,,,,,,,
-formal,mercy health,Mariemont Family Medicine,6800 Murray Avenue,Suite 100,Cincinnati,OH,45227,513-271-4455,,Kimberly Neeb, APRN-CNP,Regina Krainz, MD,Lisa Flannery, CNP,Corinne Franke, CNP,,,,,,,,,
-formal,mercy health,Midwood Family Medicine,2446 Kipling Avenue,,Cincinnati,OH,45239,513-853-2500,,Kimberly Neeb, APRN-CNP,Regina Krainz, MD,Lisa Flannery, CNP,Corinne Franke, CNP,,,,,,,,,
-formal,mercy health,Mt. Adams Family Medicine,1212 Oak Street,,Cincinnati,OH,45206,513-569-6000,,Kimberly Neeb, APRN-CNP,Regina Krainz, MD,Lisa Flannery, CNP,Corinne Franke, CNP,,,,,,,,,
-formal,mercy health,Northside Family Medicine,1827 Chase Avenue,,Cincinnati,OH,45223,513-569-6005,,Marilyn Wyne, MD,Heather Beaulieu, CNP,Erin Crowe, CNP,Denise Platt, CNP,Amy Sheehan, CNP,,,,,,,,
-formal,mercy health,Oakwood Family Medicine,1440 Compton Road,Suite 300,Cincinnati,OH,45231,513-522-2800,,Marilyn Wyne, MD,Heather Beaulieu, CNP,Erin Crowe, CNP,Denise Platt, CNP,Amy Sheehan, CNP,,,,,,,,
-formal,mercy health,Over the Rhine Family Medicine,1827 Chase Avenue,,Cincinnati,OH,45223,513-569-6005,,Marilyn Wyne, MD,Heather Beaulieu, CNP,Erin Crowe, CNP,Denise Platt, CNP,Amy Sheehan, CNP,,,,,,,,
-formal,mercy health,Pediatrics,1717 Scott Street,,Covington,KY,41011,513-569-5437,,Keegan Chaudoir, DO,Melissa Riggs, CNP,,,,,,,,,,,
-formal,mercy health,Queen City Pediatrics,1212 Oak Street,,Cincinnati,OH,45206,513-569-6181,,Keegan Chaudoir, DO,Melissa Riggs, CNP,,,,,,,,,,,
-formal,mercy health,Queen City Pediatrics,2446 Kipling Avenue,,Cincinnati,OH,45239,513-853-2577,,Keegan Chaudoir, DO,Melissa Riggs, CNP,,,,,,,,,,,
-formal,mercy health,Queen City Pediatrics,4700 E Galbraith Road,Suite 100,Cincinnati,OH,45236,513-792-7044,,Keegan Chaudoir, DO,Melissa Riggs, CNP,,,,,,,,,,,
-formal,mercy health,Queen City Pediatrics,630 Ohio Pike,Suite 100,Cincinnati,OH,45245,513-752-7822,,Keegan Chaudoir, DO,Melissa Riggs, CNP,,,,,,,,,,,
-formal,mercy health,St. Elizabeth Ann Seton,1212 Oak Street,,Cincinnati,OH,45206,513-569-6000,,Kimberly Neeb, APRN-CNP,Tanya Horacek, MD,Regina Krainz, MD,Michelle Hirt, CNP,Lisa Flannery, CNP,Corinne Franke, CNP,,,,,,,
-formal,mercy health,St. Monica - St. George,6800 Murray Avenue,,Cincinnati,OH,45227,513-271-4455,,Marilyn Wyne, MD,Heather Beaulieu, CNP,Erin Crowe, CNP,Denise Platt, CNP,Amy Sheehan, CNP,,,,,,,,
-formal,mercy health,St. Vincent de Paul Medical Center,1212 Oak Street,,Cincinnati,OH,45206,513-569-6000,,Camealia Sutton, MD,Tanya Horacek, MD,Barbara Keeton, APRN-CNP,Meagan Lichtenstein, CNP,Natalie Quinn, CNP,Amy Sheehan, CNP,,,,,,,
-formal,mercy health,The Christ Hospital,,,Cincinnati,OH,,,,,,,,,,,,,,,,
-formal,mercy health,Thrower Pediatrics Covington,1717 Scott Street,,Covington,KY,41011,513-569-5437,,Keegan Chaudoir, DO,Melissa Riggs, CNP,,,,,,,,,,,
-formal,mercy health,Tolbert Medical Center,,,Cincinnati,OH,,,,,,,,,,,,,,,,
-formal,mercy health,Clermont Hospital,,,Cincinnati,OH,,,,,,,,,,,,,,,,
-formal,mercy health,West Hospital,,,Cincinnati,OH,,,513-215-1964,,,,,,,,,,,,,`;
-
-        // Parse CSV data with proper handling of quoted fields
-        function parseCSV(csv) {
-            const lines = csv.trim().split(/\r?\n/);
-            const headers = lines[0].split(',');
-            const data = [];
-            
-            for (let i = 1; i < lines.length; i++) {
-                if (!lines[i].trim()) continue; // Skip empty lines
-                
-                const values = [];
-                let current = '';
-                let inQuotes = false;
-                
-                for (let j = 0; j < lines[i].length; j++) {
-                    const char = lines[i][j];
-                    const nextChar = lines[i][j + 1];
-                    
-                    if (char === '"' && nextChar === '"') {
-                        // Handle escaped quotes
-                        current += '"';
-                        j++; // Skip next quote
-                    } else if (char === '"') {
-                        inQuotes = !inQuotes;
-                    } else if (char === ',' && !inQuotes) {
-                        values.push(current.trim());
-                        current = '';
-                    } else {
-                        current += char;
-                    }
-                }
-                values.push(current.trim());
-                
-                // Only process if we have enough values
-                if (values.length >= headers.length) {
-                    const obj = {};
-                    headers.forEach((header, index) => {
-                        obj[header.trim()] = values[index] || '';
-                    });
-                    data.push(obj);
-                }
-            }
-            return data;
-        }
-
-        // Load data from embedded CSV
-        async function loadData() {
-            return parseCSV(csvData);
-        }
-
-        let officesData = [];
-
+        // Data embedded as JavaScript object
+        const officesData = [
+            {"sourceName":"trihealth","officeName":"Bethel Family Practice","street1":"210 N. Union St.","street2":"","city":"Bethel","state":"OH","zip":"45106","phone":"513-734-9050","fax":"","providers":["Candes Jandes, CNP","Samantha Jeffries, CNP","Heather Marie Owens, MD","Abby Pritchard, CNP"]},
+            {"sourceName":"trihealth","officeName":"Bethesda Family Practice Center","street1":"1775 West Lexington","street2":"Suite 100","city":"Cincinnati","state":"OH","zip":"45212","phone":"513-977-6700","fax":"513-531-2624","providers":["Elizabeth Beiter, MD","Amanda Goodale, DO","Richard Okragly, MD","Jonathan Sorscher, MD","Michael Webb, MD","Scott Woods, MD","Stephen Zitelli, MD"]},
+            {"sourceName":"trihealth","officeName":"Bethesda Group Practice – Milford","street1":"5861 Cinema Drive","street2":"","city":"Milford","state":"OH","zip":"45150","phone":"513-248-8800","fax":"","providers":["Fadi Bailony, MD","Mohammad Fattal, MD","Stephanie Schmidt, MD","Mathew Simon, DO","Elizabeth Wang, CNP"]},
+            {"sourceName":"trihealth","officeName":"Bethesda Medical Center at Arrow Springs","street1":"100 Arrow Springs Blvd.","street2":"","city":"Lebanon","state":"OH","zip":"45036","phone":"513-282-7000","fax":"","providers":[]},
+            {"sourceName":"trihealth","officeName":"Blue Ash Internal Medicine","street1":"4260 Glendale-Milford Road","street2":"Suite 101","city":"Cincinnati","state":"OH","zip":"45242","phone":"513-745-9993","fax":"513-852-1483","providers":["Leona Bowman, MD","Monica Brown, CNP","Parool Kadakia, MD"]},
+            {"sourceName":"trihealth","officeName":"Good Samaritan Faculty Medical Center","street1":"375 Dixmyth Avenue","street2":"5th Floor","city":"Cincinnati","state":"OH","zip":"45220","phone":"513-862-1800","fax":"","providers":[]},
+            {"sourceName":"trihealth","officeName":"Good Samaritan Free Health Center","street1":"3727 St. Lawrence Ave.","street2":"","city":"Cincinnati","state":"OH","zip":"45205","phone":"513-246-6888","fax":"","providers":[]},
+            {"sourceName":"trihealth","officeName":"Group Health Anderson","street1":"7794 Five Mile Road","street2":"","city":"Cincinnati","state":"OH","zip":"45230","phone":"513-246-7000","fax":"","providers":[]},
+            {"sourceName":"trihealth","officeName":"Group Health Clifton","street1":"379 Dixmyth Ave.","street2":"","city":"Cincinnati","state":"OH","zip":"45220","phone":"513-246-7000","fax":"513-246-7590","providers":["John Alford, DO","Amanda Chaney, DO","Nicholas Denlinger, CNP","Anna Friend, MD","Anjuli Mahajan, MD","Lee Niemeyer, MD","Paige Heimann De Buys, MD","Matthew Harden, DO","Jessica Jobert, CNP","David Lustig, MD","Robert Oliver, MD","Rushyal Shyamraj, MD","Trisha Weeks, CNP"]},
+            {"sourceName":"trihealth","officeName":"Group Health Kenwood","street1":"8240 Northcreek Drive","street2":"","city":"Cincinnati","state":"OH","zip":"45236","phone":"513-246-7000","fax":"513-246-5484","providers":[]},
+            {"sourceName":"trihealth","officeName":"Group Health Mason","street1":"6010 Mason-Montgomery Road","street2":"","city":"Mason","state":"OH","zip":"45040","phone":"513-246-7000","fax":"513-204-6355","providers":["Lindsay Darkins, MD","Jill Manahan, DO","Justin  Spencer, MD","Claire Cunningham, MD","Jay Hayner, MD","Kai Huang, MD","Antonio Rojas, MD"]},
+            {"sourceName":"trihealth","officeName":"Group Health West Chester","street1":"8040 Princeton-Glendale Road","street2":"","city":"West Chester","state":"OH","zip":"45069","phone":"513-246-7000","fax":"513-246-5479","providers":["Steven Jung, MD","Alexandra Lawson, MD","Carly Morgan, DO","Douglas Thompson, DO","Renee Canfield, CNP","Jenna Elsner, CNP","Sarah Fedyk, MD","Wahija Koomal, MD","Ronald Smith, MD","Chadd Todd, MD"]},
+            {"sourceName":"trihealth","officeName":"Group Health Western Hills","street1":"2001 Anderson Ferry Rd.","street2":"","city":"Cincinnati","state":"OH","zip":"45238","phone":"513-246-7000","fax":"","providers":["Tracy Mead Stave, CNP","Raymond Reuss, MD","Kathleen Schalk, CNP","Kimberly Seltzer, MD","Yogesh Sharma, MD","Rachel Thomas, DO"]},
+            {"sourceName":"trihealth","officeName":"Health First Physicians ‒ Loveland","street1":"10675A Loveland-Madeira Road","street2":"","city":"Loveland","state":"OH","zip":"45140","phone":"513-774-8220","fax":"","providers":["Kelly Arey, DO","Kimberly Bethea, MD","Donald Clark, MD","Stephanie Cockrill, MD","Neama Esmaili, MD","Jodi Harvey, MD","Barbara Neuman, CNP","Gregory Noble, MD","Annmarie Sagraves, PA-C","Yueting Yang, MD","Emily Lyon, LISW-S "]},
+            {"sourceName":"trihealth","officeName":"Health First Physicians ‒ Mariemont","street1":"7225 Wooster Pike","street2":"","city":"Cincinnati","state":"OH","zip":"45227","phone":"513-272-0250","fax":"","providers":["Emily Armbruster, MD","David Hayes, DO","Nicole Puterbaugh, CNP"]},
+            {"sourceName":"trihealth","officeName":"Health First Physicians ‒ Mason","street1":"7423 South Mason-Montgomery Road","street2":"Suite B","city":"Mason","state":"OH","zip":"45040","phone":"513-398-3445","fax":"","providers":["Alicia Bachus, MD","Brian Hoffman, MD","Lauren Hruszkewycz, MD","Sara Khaja, MD","Betsy Peerless, MD","Courtney-Lynn Stahl, MD"]},
+            {"sourceName":"trihealth","officeName":"Internal Medicine Associates","street1":"10495 Montgomery Road","street2":"Suite 15","city":"Cincinnati","state":"OH","zip":"45242","phone":"513-936-8900","fax":"","providers":["Rosa Robles, MD","Paula Villarejo, MD"]},
+            {"sourceName":"trihealth","officeName":"Montgomery Family Medicine","street1":"11029 Montgomery Road","street2":"","city":"Cincinnati","state":"OH","zip":"45249","phone":"513-891-2211","fax":"","providers":["Casey Gallagher, MD","Subhra Jana, DO","Anne Jennings, CNP","Lea Jordan, CNP","Sarah Kindt, DO","Douglas Moody, MD","Joyce Panganamala, PA-C","Peter Siegel, MD","Anne Vaz, CNP","Richard Vonder Brink, MD"]},
+            {"sourceName":"trihealth","officeName":"Oxford Internal Medicine","street1":"5151 Morning Sun Road","street2":"Suite D","city":"Oxford","state":"OH","zip":"45056","phone":"513-523-4195","fax":"513-523-4353","providers":["Christian Adams-Carey, MD","Brent Bader, MD","Molly Emmert, MD","Kayleigh Geiser, CNP","Amneet Khera, DO","Taylor Myers, CNP"]},
+            {"sourceName":"trihealth","officeName":"Oxford Internal Medicine - Brookville","street1":"10058 Cooley Road","street2":"Suite B","city":"Brookville","state":"IN","zip":"47012","phone":"765-647-3557","fax":"765-647-2977","providers":[]},
+            {"sourceName":"trihealth","officeName":"Oxford Internal Medicine - College Corner","street1":"121 West Liberty Avenue W","street2":"","city":"College Corner","state":"IN","zip":"47003","phone":"765-732-3114","fax":"765-732-3903","providers":[]},
+            {"sourceName":"trihealth","officeName":"Physician Associates of Good Samaritan – Delhi","street1":"425 Farrell Court","street2":"","city":"Cincinnati","state":"OH","zip":"45233","phone":"513-451-6871","fax":"","providers":["Sarah Curry, CNP","Joseph Huschart, MD","Rhazes Kevin Khodadad, MD","Scott Massa, MD","Raymond Metzger, MD","Megan Pflum, CNP"]},
+            {"sourceName":"trihealth","officeName":"Physician Associates of Good Samaritan – Northwest","street1":"3035 Hamilton-Mason Road","street2":"Suite 203","city":"Hamilton","state":"OH","zip":"45011","phone":"513-741-7200","fax":"","providers":["Aparna Ambe, MD","Hajra Shahbaz Cheema, MD","Uma Santhanam, MD","Holly Ait Taouit, PsyD"]},
+            {"sourceName":"trihealth","officeName":"Queen City Medical Group – Anderson","street1":"7991 Beechmont Ave","street2":"","city":"Cincinnati","state":"OH","zip":"45255","phone":"513-528-5600","fax":"","providers":["Maria Diener, CNP","Diane Dolensky, MD","Fabiola Feldhaus, MD","Michel Kourie, MD","Sorina Macavei, MD","Paul Massoud, MD","Ashlee Schaa, CNP","Timothy Williams, MD"]},
+            {"sourceName":"trihealth","officeName":"Queen City Physicians - Hyde Park Internal Medicine","street1":"2753 Erie Avenue","street2":"","city":"Cincinnati","state":"OH","zip":"45208","phone":"513-246-8000","fax":"","providers":["Marinda Benjamin, CNP","Melissa Shields Brinkman, CNP","Jessica Cassady, MD","G. Stephen Cleves, MD","Taylor Furbay, CNP","Alisa Paulus, CNP","Elizabeth Royse, CNP","Mara Sponseller, MD","Sarah St. Cyr, MD","Joshua Stephens, DO","Robert Thaler, MD","Nicole Bishwaty, MSN, FNP-C","Nicole Tafuri, CNP"]},
+            {"sourceName":"trihealth","officeName":"Queen City Physicians - Madeira Internal Medicine","street1":"7825 Laurel Avenue","street2":"","city":"Cincinnati","state":"OH","zip":"45243","phone":"513-561-4811","fax":"","providers":["Suhail Chaudhry, MD","Yana Kholodenko, MD","Eshwar Holenarsipur Ramadas, MD"]},
+            {"sourceName":"trihealth","officeName":"Queen City Physicians - University Station","street1":"1775 Lexington Avenue","street2":"Suite 150","city":"Cincinnati","state":"OH","zip":"45212","phone":"513-246-8000","fax":"","providers":["Jonathan Buck, MD","Lorraine Stephens, MD"]},
+            {"sourceName":"trihealth","officeName":"Queen City Physicians - Western Hills Internal Medicine","street1":"6350 Glenway Avenue","street2":"3rd Floor","city":"Cincinnati","state":"OH","zip":"45211","phone":"513-481-3400","fax":"","providers":["Stephanie Becker, CNP","Amanda Bohannon, CNP","Kara Jaeger, PA-C","Roshni Shetty, MD","Prudence Takougang, MD","Kyle Taylor, MD","Alexandra Taylor, MD"]},
+            {"sourceName":"trihealth","officeName":"Queen City Physicians - Western Ridge Internal Medicine","street1":"6949 Good Samaritan Drive","street2":"Second Floor","city":"Cincinnati","state":"OH","zip":"45247","phone":"513- 931-2400","fax":"","providers":["Colton Briggs, DO","Kendra Hall, DO","Jacob Hill, DO","Alexandra Kreiselman, MD","Allen Guowen Liew, MD","Charles Thiemann, DO","Robert Travez, MD","Hana Winchester, MD"]},
+            {"sourceName":"trihealth","officeName":"Queen City Physicians - Xavier University","street1":"1723 Cleneay Avenue","street2":"","city":"Cincinnati","state":"OH","zip":"45212","phone":"513- 745-3022","fax":"","providers":["Pacita David, MD","Heather Schibi, CNP"]},
+            {"sourceName":"trihealth","officeName":"TriHealth Glenwood Family Practice - Finneytown","street1":"740 Galbraith Road","street2":"","city":"Cincinnati","state":"OH","zip":"45231","phone":"513-771-0800","fax":"","providers":["Alyssa Brogden, DO","Shyla Dyer, MD","Mikaela Moore, MD","Maya Prabhu, MD","Smita Saraf, MD","Usha Shenai, MD"]},
+            {"sourceName":"trihealth","officeName":"TriHealth Internal Medicine - Finneytown","street1":"740 Galbraith Road","street2":"","city":"Cincinnati","state":"OH","zip":"45231","phone":"513-246-7000","fax":"513-728-4344","providers":["Cody Miller, DO","Spencer Wade, DO"]},
+            {"sourceName":"trihealth","officeName":"TriHealth Kings Mills Family Medicine","street1":"2162 Kings Mills Road","street2":"","city":"Mason","state":"OH","zip":"45040","phone":"513-246-2260","fax":"","providers":["Rhoda Chamberlain, CNP","Aleesha Montoya, MD","Nathan Wiedemann, MD"]},
+            {"sourceName":"trihealth","officeName":"TriHealth Physician Partners - Wilmington","street1":"1184 Locust Street","street2":"","city":"Wilmington","state":"OH","zip":"45177","phone":"937-382-1616","fax":"937-382-7877","providers":["Tiffany Burroughs, CNP","Laura Clutter, CNP","Mary Inwood, MD","Regina Lahmann, CNP","Holly Lamb, CNP","Sheila Llanes-Diopita, MD","Katy Meeker, CNP","John Merling, MD","Ross Wickstrom, CNP"]},
+            {"sourceName":"trihealth","officeName":"TriHealth Physician Partners Arrow Springs","street1":"100 Arrow Springs Blvd.","street2":"Suite 2700","city":"Lebanon","state":"OH","zip":"45036","phone":"513-282-7911","fax":"","providers":["Monica Brown, CNP","Kanooz Chaudhary, MD","Paul Jentes, DO","Samia Kanooz, MD","Lindsay Lovell, CNP","Peter Nguyen, MD","Scott Strait, MD"]},
+            {"sourceName":"trihealth","officeName":"TriHealth Physician Partners Delhi Pike","street1":"5314 Delhi Pike","street2":"","city":"Cincinnati","state":"OH","zip":"45238","phone":"513-347-6922","fax":"513-347-6955","providers":["Melissa Schroer, MD","Kara Jaeger, PA-C","Nicole Overbeck, PA-C"]},
+            {"sourceName":"trihealth","officeName":"TriHealth Women's Center Kenwood","street1":"8240 Northcreek Drive","street2":"Suite 4100","city":"Cincinnati","state":"OH","zip":"45236","phone":"513-853-7555","fax":"","providers":["Anantha Brahmamdam, MD","Neha Gandhi, MD","Emilee Hayden, CNP","Mali Jurkowski, MD","Michelle Louis, MD","Yvette Neirouz, MD","Michelle Box, LISW"]},
+            {"sourceName":"trihealth","officeName":"West Chester Medical Group","street1":"8020 Liberty Way","street2":"","city":"West Chester","state":"OH","zip":"45069","phone":"513-777-8300","fax":"","providers":["Shoaib Asgher, MD","Michael Bernardon, MD","Arnold Drummond, MD","Gurpreet Kaur, DO","Fatema Nassar, DO","Omar Siddiqi, MD","Michelle Wiedemann, MD","Joshua Williams, CNP"]},
+            {"sourceName":"trihealth","officeName":"Western Family Physicians","street1":"3425 North Bend Road","street2":"","city":"Cincinnati","state":"OH","zip":"45239","phone":"513-853-4900","fax":"","providers":["Lauren Cruse, MD","Michelle Groves, MD","Stephanie Hunstad, MD","Ann McCarthy, CNP","Amy Neal, MD","Amy Ruschulte, MD"]},
+            {"sourceName":"trihealth","officeName":"White Oak Family Practice","street1":"7631 Cheviot Road","street2":"","city":"Cincinnati","state":"OH","zip":"45247","phone":"513-923-1886","fax":"","providers":["Kelly Brown, MD","Thomas Green, MD","Nicholas Parkinson, CNP","Patrick Reilly, MD","Eugene Reilly, MD"]},
+            {"sourceName":"trihealth","officeName":"Bethesda Butler Hospital","street1":"3125 Hamilton Mason Rd","street2":"","city":"Hamilton","state":"OH","zip":"45011","phone":"513-894-8888","fax":"513-895-1247","providers":[]},
+            {"sourceName":"trihealth","officeName":"Bethesda Medical Center at Arrow Springs","street1":"100 Arrow Springs Blvd.","street2":"","city":"Lebanon","state":"OH","zip":"45036","phone":"513-282-7000","fax":"513-891-7354","providers":[]},
+            {"sourceName":"trihealth","officeName":"Bethesda North Hospital","street1":"10500 Montgomery Road","street2":"","city":"Cincinnati","state":"OH","zip":"45242","phone":"513-865-1111","fax":"","providers":[]},
+            {"sourceName":"trihealth","officeName":"Good Samaritan Hospital","street1":"375 Dixmyth Avenue","street2":"","city":"Cincinnati","state":"OH","zip":"45220","phone":"513-862-1400","fax":"","providers":[]},
+            {"sourceName":"trihealth","officeName":"Good Samaritan Medical Center - Western Ridge","street1":"6949 Good Samaritan Drive","street2":"","city":"Cincinnati","state":"OH","zip":"45247","phone":"513-246-9800","fax":"","providers":[]},
+            {"sourceName":"trihealth","officeName":"McCullough-Hyde Memorial Hospital","street1":"110 N. Poplar St.","street2":"","city":"Oxford","state":"OH","zip":"45056","phone":"513-523-2111","fax":"","providers":[]},
+            {"sourceName":"central ohio primary care","officeName":"Worthington Pediatrics","street1":"890 High Street","street2":"Suite 200","city":"Worthington","state":"OH","zip":"43085","phone":"614-540-7339","fax":"614-540-7338","providers":["Nardia Ataman, MD","Zorica Bjelovuk, CNP","Angie Waldman, CPNP, IBCLC"]},
+            {"sourceName":"mercy health","officeName":"Adams County Family Medicine","street1":"17862 State Route 247","street2":"","city":"Seaman","state":"OH","zip":"45679","phone":"937-695-0748","fax":"","providers":["Ashley Wellman, APRN-CNP","Morgan Paul, MD","Tyler Campbell, MD"]},
+            {"sourceName":"mercy health","officeName":"Amberly Primary Care","street1":"8599 Ridge Rd.","street2":"","city":"Cincinnati","state":"OH","zip":"45236","phone":"513-418-5700","fax":"","providers":["Shreenivasan Shanmugam, MD","Scott Kotzin, DO","Jordan Austin, DO"]},
+            {"sourceName":"mercy health","officeName":"Anderson Family Medicine","street1":"8000 Five Mile Rd.","street2":"Suite 205","city":"Cincinnati","state":"OH","zip":"45230","phone":"513-624-1240","fax":"513-233-6983","providers":["Monica Sedmak, PA-C","Julie Bruns, PA-C","Anne Dillon, MD"]},
+            {"sourceName":"mercy health","officeName":"Anderson Hills Internal Medicine","street1":"8000 Five Mile Rd.","street2":"Suite 305","city":"Cincinnati","state":"OH","zip":"45230","phone":"513-232-3500","fax":"513-624-1290","providers":["Alexis Rod, APRN-CNP","Carol Allman, APRN-CNP","Dinesh Chauwan, MD","Justin York, DO","Ben Werneke, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"Anderson Hospital Family & Community Medicine Residency Practice","street1":"8000 Five Mile Rd.","street2":"Suite 100","city":"Cincinnati","state":"OH","zip":"45230","phone":"513-233-6980","fax":"","providers":["Allegra Tenkman, MD","Paula Peake, MD","Roberta Kern, MD","James O'Dea, MD","Rebecca Morris, MD","Daniel Kim, MD","Farzad Mazloomi, MD","Katheryne Ruck, DO","Jamelle Bowers, MD","Myles Barlow, DO","Stephen Feagins, MD"]},
+            {"sourceName":"mercy health","officeName":"Anderson Primary Care","street1":"7502 State Rd","street2":"Suite 3310","city":"Cincinnati","state":"OH","zip":"45255","phone":"513-233-2444","fax":"","providers":[]},
+            {"sourceName":"mercy health","officeName":"Avondale Primary Care","street1":"2135 Dana Ave.","street2":"Suite 400","city":"Cincinnati","state":"OH","zip":"45207","phone":"513-585-9500","fax":"513-585-9505","providers":["Jeremiah Davis, MD","Ashley Mallory, MD","Shante Askew, APRN-CNP","Kent Robinson, MD","Patricia Okocha, MD"]},
+            {"sourceName":"mercy health","officeName":"Blue Ash Family Medicine","street1":"4700 E. Galbraith Rd.","street2":"Suite 202","city":"Cincinnati","state":"OH","zip":"45236","phone":"513-891-5532","fax":"513-924-8369","providers":["Lauren Gettelfinger, APRN-CNP","Brian Peerless, MD","Arianna Warfel, APRN-CNP","Erika Osterbrock, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"Center of Excellence, Internal Medicine Residency Practice","street1":"1508 John St","street2":"Suite B","city":"Cincinnati","state":"OH","zip":"45214","phone":"513-598-3900","fax":"513-598-3919","providers":["Stephen Feagins, MD"]},
+            {"sourceName":"mercy health","officeName":"Deerfield Family Medicine","street1":"5232 Socialville-Fosters Rd.","street2":"","city":"Mason","state":"OH","zip":"45040","phone":"513-339-0800","fax":"513-339-0790","providers":["Sarah Mason, APRN-CNP","Michael Trombley, MD","Sarah Mergy, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"Delhi Primary Care","street1":"5310 Rapid Run Road","street2":"Suite 201","city":"Cincinnati","state":"OH","zip":"45238","phone":"513-215-0290","fax":"513-215-0291","providers":["Katrina Fernandez, APRN-CNP","Morgan Pennekamp, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"Dent Crossing Family Medicine","street1":"6507 Harrison Ave.","street2":"Suite N","city":"Cincinnati","state":"OH","zip":"45247","phone":"513-981-4242","fax":"513-347-5050","providers":["Angela Wuebbling, APRN-CNP","Joseph Seibert, MD","Matthew Gaffney, MD","Melissa Fulton, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"Dry Ridge Family Medicine","street1":"4130 Dry Ridge Rd.","street2":"","city":"Cincinnati","state":"OH","zip":"45252","phone":"513-981-5162","fax":"513-923-5522","providers":["Timothy Roark, APRN-CNP","Lindsey Buelterman, APRN-CNP","Charlene Cureton, APRN-CNP","Daniel Kim, MD"]},
+            {"sourceName":"mercy health","officeName":"Eastgate Family Medicine","street1":"601 Ivy Gateway","street2":" Suite 2100","city":"Cincinnati","state":"OH","zip":"45245","phone":"513-752-8000","fax":"513-752-1078","providers":["Megan Krallman Cook, DO","Betsy Drake, MD","Sarah Wilson, PA-C","Sotirios Koros, DO","Kathryn Clarke, APRN-CNP","Debra Purvis-Heaton, APRN-CNP","Lauren Herzfeld, PA-C","Andrea Brunacini, APRN-CNP","Aaron Schklar, DO","Megan Meyer, PA-C","Kiersten Brown, MD"]},
+            {"sourceName":"mercy health","officeName":"Evendale Family Medicine","street1":"10475 Reading Rd.","street2":" Suite 405","city":"Cincinnati","state":"OH","zip":"45241","phone":"513-585-9600","fax":"513-585-9668","providers":["Priyanka Kakar, MD","Rocio Tussey, MD","Jamie Fields, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"Fairfield Family Medicine","street1":"741-A Wessel Dr.","street2":"","city":"Fairfield","state":"OH","zip":"45014","phone":"513-829-2614","fax":"513-829-0177","providers":["Rebecca Koehl, MD","Megan Houser, APRN-CNP","Megan Miller, DO","Shauna Wojciechowski, APRN-CNP","Richard Banks Jr., MD"]},
+            {"sourceName":"mercy health","officeName":"Fairfield Hospital Internal Medicine Residency Practice","street1":"2990 Mack Rd ","street2":"Suite 107","city":"Fairfield","state":"OH","zip":"45014","phone":"513-870-7800","fax":"","providers":["Sudhindra Pydimarri, MD","Robert Battisti, MD"]},
+            {"sourceName":"mercy health","officeName":"Fairfield Internal Medicine","street1":"544 Patterson Blvd","street2":"","city":"Fairfield","state":"OH","zip":"45014","phone":"513-896-9595","fax":"","providers":["Kendra Lykins, APRN-CNP","Coleen McCormick, APRN-CNP","Samar Hijazi, MD","Samantha Wood, DO","Ziad Khatib, MD","Md Wahidul Islam, MD","Neel Patel, DO","Diane Armstrong, MD","Katherine Keating, APRN-CNP","Kevin Hartman, MD","Jason Ulitzsch, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"Forest Hills Family Medicine","street1":"7575 Five Mile Road","street2":"","city":"Cincinnati","state":"OH","zip":"45230","phone":"513-232-7100","fax":"513-232-6975","providers":["Emilie Grosheim, APRN-CNP","Taya Lewis, APRN-CNP","Risa Spieldoch, MD","Cameron Stump, MD","Natalie Badawi, APRN-CNP","James O'Dea, MD","Ebenezer Enchia Jr., MD"]},
+            {"sourceName":"mercy health","officeName":"Forest Park Internal Medicine and Pediatrics","street1":"11550 Winton Rd.","street2":"","city":"Cincinnati","state":"OH","zip":"45240","phone":"513-924-8200","fax":"","providers":["Jamesha Ford, DO","Emmett Roper Jr., MD","Stephen Wilson, MD","Alaba Robinson, MD","Leoma Lavender, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"Georgetown Family Medicine (Temporarily Closed)","street1":"4881 State Route 125","street2":"","city":"Georgetown","state":"OH","zip":"45121","phone":"937-378-2526","fax":"","providers":[]},
+            {"sourceName":"mercy health","officeName":"Harrison Primary Care","street1":"10450 New Haven Rd.","street2":"Suite 5","city":"Harrison","state":"OH","zip":"45030","phone":"513-981-5852","fax":"513-367-8031","providers":["Jane Blinzler, MD","Amy Spivey, MD","Ashlyn McCullough, APRN-CNP","Lisa Lengerich, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"Kenwood Concierge Primary Care","street1":"4750 E Galbraith Rd","street2":"Suite 105","city":"Cincinnati","state":"OH","zip":"45236","phone":"513-745-2199","fax":"","providers":["Suzanne Matunis, MD","Mary Mosko, MD"]},
+            {"sourceName":"mercy health","officeName":"Kenwood Family Medicine","street1":"4750 E. Galbraith Rd.","street2":"Suite 210","city":"Cincinnati","state":"OH","zip":"45236","phone":"513-686-4830","fax":"","providers":["Christopher Sweeney, MD","Luke Glischinski, APRN-CNP","Laura Sanchez, MD","Michael Butrey, MD"]},
+            {"sourceName":"mercy health","officeName":"Kenwood Internal Medicine","street1":"4750 E. Galbraith Rd.","street2":"Suite 111","city":"Cincinnati","state":"OH","zip":"45236","phone":"513-686-4840","fax":"","providers":["Robert Rubin, MD","Barry Brook, MD","Adi Carmi, MD","Huong Nguyen, MD","Sydney Saxena, MD","Deborah Farber, MD","David Nartker, MD"]},
+            {"sourceName":"mercy health","officeName":"Kings Mills Primary Care","street1":"5230 Kings Mills Rd.","street2":"","city":"Mason","state":"OH","zip":"45040","phone":"513-981-5820","fax":"","providers":["Todd Bramlee, DO"]},
+            {"sourceName":"mercy health","officeName":"Kyles Station Primary Care","street1":"4652 Partners Place","street2":"","city":"Liberty Township","state":"OH","zip":"45011","phone":"513-603-8720","fax":"513-603-8739","providers":["Dwayne Walker, MD","Carey Budrus, APRN-CNP","Tyler Johnson, MD"]},
+            {"sourceName":"mercy health","officeName":"Liberty Falls Family Medicine","street1":"6770 Cincinnati Dayton Rd.","street2":"Suite 100","city":"Liberty Township","state":"OH","zip":"45044","phone":"513-777-1500","fax":"513-981-4163","providers":["Swetha Narayana, MD","Claire Hendrix, MD","Tiffani Jepson, MD","Monica Hartman, MD"]},
+            {"sourceName":"mercy health","officeName":"Little Miami School Health Center","street1":"7247 Zoar Rd.","street2":"","city":"Maineville","state":"OH","zip":"45039","phone":"513-215-9277","fax":"513-899-3010","providers":["Lauren Long, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"Loveland Primary Care","street1":"10562 Loveland Madeira Rd","street2":"","city":"Loveland","state":"OH","zip":"45140","phone":"513-583-6160","fax":"","providers":["Tamara Huson, MD"]},
+            {"sourceName":"mercy health","officeName":"Maineville Primary Care","street1":"6054 S. State Route 48","street2":"","city":"Maineville","state":"OH","zip":"45039","phone":"513-981-5860","fax":"513-981-5869","providers":["Catherine Weathers, APRN-CNPLori Stotz, MD"]},
+            {"sourceName":"mercy health","officeName":"Mason Primary Care","street1":"5075 Parkway Dr","street2":"Suite 101","city":"Mason","state":"OH","zip":"45040","phone":"513-584-6898","fax":"513-584-6897","providers":["Brandy Gettys, MD","Deepti Sharma, MD","Amber Bramlee, APRN-CNP","Amal Sarah, MD","Prashanth Kesav, MD","Dyatra Mitchell, MD"]},
+            {"sourceName":"mercy health","officeName":"Milford Family Medicine","street1":"201 Old Bank Rd.","street2":"Suite 103","city":"Milford","state":"OH","zip":"45150","phone":"513-248-0100","fax":"513-248-4334","providers":["Angela Grantmaier, APRN-CNP","Jennifer MacSwords, DO","James Krempasky, DO","Auditi Kundu, MD","Jai Chirravuri, MD","Barry Rubin, DO","Mary Lim Lee, MD","Brittany Clarke, APRN-CNP","Madeleine Fortener, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"Monfort Heights Family Medicine","street1":"3301 Mercy Health Blvd.","street2":"Suite 340","city":"Cincinnati","state":"OH","zip":"45211","phone":"513-981-5922","fax":"513-385-6430","providers":["Paul Day, MD","Courtney Johnson, APRN-CNP","Kristin Brausch, APRN-CNP","Lisa Pomerleau, MD","Kellene Lenz, MD","Jason Mattingly, MD"]},
+            {"sourceName":"mercy health","officeName":"Mt. Orab Family Medicine","street1":"621 Main Street","street2":"","city":"Mt. Orab","state":"OH","zip":"45154","phone":"937-444-0952","fax":"937-444-0953","providers":["Nadeen Kassir, MD","Tonia Conn, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"Oak Hills Internal Medicine","street1":"6045 Bridgetown Rd.","street2":"Suite 2","city":"Cincinnati","state":"OH","zip":"45248","phone":"513-981-4105","fax":"","providers":["Jared Galloway, MD","Esana Pokhrel, MD","Sarah Doyle, APRN-CNP","Tiffany Backinger, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"Oakley Primary Care","street1":"4631 Ridge Ave.","street2":"Suite B","city":"Cincinnati","state":"OH","zip":"45209","phone":"513-631-1268","fax":"513-366-4121","providers":["Hillary Carnell, DO","Anthony Carnell, DO","Lindsey Johnson, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"Rookwood Primary Care","street1":"4101 Edwards Rd.","street2":"Second Floor","city":"Cincinnati","state":"OH","zip":"45209","phone":"513-981-4646","fax":"513-979-2830","providers":["Nina Oberschmidt, DO","Andrew Merrill, DO","Krista Burridge, MD","Joel Daley, DO"]},
+            {"sourceName":"mercy health","officeName":"Sardinia Family Medicine","street1":"7109 Bachman Rd.","street2":"","city":"Sardinia","state":"OH","zip":"45171","phone":"937-446-2531","fax":"937-446-3441","providers":["Ashley Wellman, APRN-CNP","Benjamin Barnett, APRN-CNP","Kimberley Jodrey, APRN-CNP","Michael McHenry, MD","Kasie Rector, APRN-CNP","Kelci Tull, APRN-CNP","Todd Williams, MD"]},
+            {"sourceName":"mercy health","officeName":"Sayler Park School Health Center","street1":"","street2":"","city":"","state":"OH","zip":"","phone":"513-467-1400","fax":"","providers":[]},
+            {"sourceName":"mercy health","officeName":"Springdale Family Medicine","street1":"212 West Sharon Rd.","street2":"","city":"Cincinnati","state":"OH","zip":"45246","phone":"513-771-7213","fax":"","providers":["Grant Ridgway, MD","Joseph Kershner, DO","Erin Davlin, MD","Kara Smith, APRN-CNP","Benjamin Rose, DO","Douglas Hancher, MD","Emily Krans, APRN-CNP","Jonathan Gully, MD"]},
+            {"sourceName":"mercy health","officeName":"Tri-County Primary Care","street1":"9582 Princeton Glendale Rd","street2":"","city":"Hamilton","state":"OH","zip":"45011","phone":"513-346-5640","fax":"513-346-5644","providers":["Eleia Reyes, MD","Annie Johnson, MD","Jessica Stairhime, APRN-CNP","Steven Lunz, MD"]},
+            {"sourceName":"mercy health","officeName":"West Chester Family Medicine","street1":"8859 Brookside Ave.","street2":"Suite 101","city":"West Chester","state":"OH","zip":"45069","phone":"513-779-6225","fax":"","providers":["Christian Docena, MD","Mina Lutts, MD","Diane Koehl, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"West Chester Primary Care and Pediatrics","street1":"7777 University Dr","street2":"Suite D","city":"West Chester","state":"OH","zip":"45069","phone":"513-215-8190","fax":"513-215-8199","providers":["Clara Normanyo, MD","Pamela Davis, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"West Clermont Family Medicine","street1":"4101 Bach-Buxton Rd.","street2":"Suite 200","city":"Batavia","state":"OH","zip":"45103","phone":"513-215-0150","fax":"513-215-0159","providers":["Justin York, DO","Jacqueline Kerber, APRN-CNP"]},
+            {"sourceName":"mercy health","officeName":"West Internal Medicine and Pediatrics","street1":"3301 Mercy Health Blvd.","street2":"Suite 280","city":"Cincinnati","state":"OH","zip":"45211","phone":"513-215-9075","fax":"","providers":["Suzanne L Lekson, MD"]},
+            {"sourceName":"mercy health","officeName":"Westside Internal Medicine","street1":"5525 Marie Ave.","street2":"","city":"Cincinnati","state":"OH","zip":"45248","phone":"513-981-5463","fax":"513-598-2242","providers":["John Leisgang, MD","Brandon Parr, DO","Courtney Johnson, APRN-CNP","Matthew Witsken, MD","Mary Bogner, APRN-CNP","Caroline Klopp, PA-C","Allysia Billow, APRN-CNP","Luke Shivers, MD"]},
+            {"sourceName":"mercy health","officeName":"White Oak Primary Care","street1":"3310 Mercy Health Blvd","street2":" Suite 210","city":"Cincinnati","state":"OH","zip":"45211","phone":"513-981-4300","fax":"513-741-1416","providers":["Gregory Niehauser, DO","Geralynn Duell, DO"]},
+            {"sourceName":"mercy health","officeName":"Winton Road Primary Care","street1":"6540 Winton Rd.","street2":"","city":"Cincinnati","state":"OH","zip":"45224","phone":"513-981-4180","fax":"513-541-3819","providers":["Dante Raneses, MD","Courtney Fortner, DO","Juanita Gaines, MD","Ifeoma Okafor, DO","Nisar Haq, MD"]},
+            {"sourceName":"mercy health","officeName":"Sheffield Primary Care","street1":"5327 Detroit Rd","street2":"Suite B","city":"Sheffield","state":"OH","zip":"44054","phone":"440-365-2600","fax":"440-365-1366","providers":["Mary Esho, MD","Jose Mendoza, MD","Bushra Siddiqui, MD","Sleiman Abukhater, MD"]}
+        ];
         // Initialize the application
-        async function init() {
-            officesData = await loadData();
+        function init() {
+            setupEventListeners();
+        }
+
+        function setupEventListeners() {
+            const organizationSelect = document.getElementById('organizationSelect');
+            const officeSelect = document.getElementById('officeSelect');
+
+            organizationSelect.addEventListener('change', function() {
+                const selectedOrg = this.value;
+                populateOfficeDropdown(selectedOrg);
+                hideOfficeInfo();
+            });
+
+            officeSelect.addEventListener('change', function() {
+                const selectedOffice = this.value;
+                if (selectedOffice) {
+                    showOfficeInfo(selectedOffice);
+                } else {
+                    hideOfficeInfo();
+                }
+            });
+        }
+
+        function init() {
             setupEventListeners();
         }
 
@@ -392,7 +353,7 @@ formal,mercy health,West Hospital,,,Cincinnati,OH,,,513-215-1964,,,,,,,,,,,,,`;
 
             // Filter offices by organization
             const offices = officesData.filter(office => 
-                office.sourceName.toLowerCase() === organization.toLowerCase()
+                office.sourceName && office.sourceName.toLowerCase() === organization.toLowerCase()
             );
 
             // Clear and populate office dropdown
@@ -412,7 +373,7 @@ formal,mercy health,West Hospital,,,Cincinnati,OH,,,513-215-1964,,,,,,,,,,,,,`;
         function showOfficeInfo(officeIndex) {
             const organization = document.getElementById('officeSelect').selectedOptions[0].dataset.organization;
             const offices = officesData.filter(office => 
-                office.sourceName.toLowerCase() === organization.toLowerCase()
+                office.sourceName && office.sourceName.toLowerCase() === organization.toLowerCase()
             );
             const office = offices[officeIndex];
 
@@ -423,7 +384,7 @@ formal,mercy health,West Hospital,,,Cincinnati,OH,,,513-215-1964,,,,,,,,,,,,,`;
             
             // Build address
             let address = office.street1;
-            if (office.street2) {
+            if (office.street2 && office.street2.trim()) {
                 address += ', ' + office.street2;
             }
             document.getElementById('officeAddress').textContent = address;
@@ -440,27 +401,20 @@ formal,mercy health,West Hospital,,,Cincinnati,OH,,,513-215-1964,,,,,,,,,,,,,`;
             };
             document.getElementById('officeOrg').textContent = orgNames[organization.toLowerCase()] || organization;
 
-            // Populate providers
+            // Populate providers - now using the providers array
             const providersList = document.getElementById('providersList');
             providersList.innerHTML = '';
             
-            const providers = [];
-            // Handle the provider columns - they're all named "providerName" in the CSV
-            const allKeys = Object.keys(office);
-            const providerKeys = allKeys.filter(key => key === 'providerName' || key.startsWith('providerName'));
-            
-            providerKeys.forEach(key => {
-                if (office[key] && office[key].trim()) {
-                    providers.push(office[key].trim());
-                }
-            });
+            const providers = office.providers || [];
 
             if (providers.length > 0) {
                 providers.forEach(provider => {
-                    const tag = document.createElement('span');
-                    tag.className = 'provider-tag';
-                    tag.textContent = provider;
-                    providersList.appendChild(tag);
+                    if (provider && provider.trim()) {
+                        const tag = document.createElement('span');
+                        tag.className = 'provider-tag';
+                        tag.textContent = provider.trim();
+                        providersList.appendChild(tag);
+                    }
                 });
             } else {
                 providersList.innerHTML = '<span class="info-value">No providers listed</span>';
